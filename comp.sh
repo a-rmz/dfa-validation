@@ -1,0 +1,1 @@
+g++ main.cpp dfa_app.cpp grid_entry.cpp -o dfa_app `pkg-config gtkmm-3.0 --cflags --libs` && ./dfa_app
