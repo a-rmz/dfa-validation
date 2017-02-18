@@ -2,11 +2,13 @@
 #include "dfa_app.h"
 #include "grid_entry.h"
 #include <iostream>
+#include <gtkmm/messagedialog.h>
 #include <gtkmm/orientable.h>
 
 // creates a new button with label "Hello World".
 DFA_app::DFA_app() :
   m_button_add("Add another state"),
+  m_button_done("Done"),
   m_button_quit("Close") {
   state_count = 0;
   
@@ -25,15 +27,23 @@ DFA_app::DFA_app() :
   add(m_grid_top);
   m_grid_top.add(m_grid_states);
   m_grid_top.add(m_button_add);
+  m_grid_top.add(m_button_done);
   m_grid_top.add(m_button_quit);
 
-  // add_state();
+  add_state();
 
   // Connect the signals
   m_button_add.signal_clicked().connect(
     sigc::mem_fun(
       *this,
       &DFA_app::add_state
+    )
+  );
+
+  m_button_done.signal_clicked().connect(
+    sigc::mem_fun(
+      *this,
+      &DFA_app::on_done_clicked
     )
   );
 
@@ -55,6 +65,18 @@ void DFA_app::add_state() {
   this->m_grid_states.add(*entry);
   this->m_grid_states.show_all_children();
   this->state_count += 1;
+}
+
+void DFA_app::on_done_clicked() {
+  auto children = this->m_grid_states.get_children();
+
+  if (children.size() <= 1) {
+    Gtk::MessageDialog dialog(*this, "Error");
+    dialog.set_secondary_text("Please add at least two states");
+    dialog.run();
+  } else{
+    hide();
+  }
 }
 
 void DFA_app::on_quit_clicked() {

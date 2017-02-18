@@ -19,13 +19,14 @@ public:
 protected:
   //Signal handlers:
   void on_quit_clicked();
+  void on_done_clicked();
   void on_add_clicked();
   void add_state();
 
   //Member widgets:
   Gtk::Grid m_grid_top, m_grid_states;
   std::vector<GridEntry> state;
-  Gtk::Button m_button_add, m_button_quit;
+  Gtk::Button m_button_add, m_button_done, m_button_quit;
 };
 
 #endif // DFA_APP_H
