@@ -2,7 +2,6 @@
 #include "grid_entry.h"
 
 GridEntry::GridEntry(Gtk::Grid* parent) : m_button_remove("Remove state") {
-   
   this->parent = parent;
   this->set_spacing(8);
   this->pack_start(m_entry_state);
