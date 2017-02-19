@@ -1,9 +1,13 @@
 
+#ifndef DFA_H
+#define DFA_H
+
 #include <string>
 #include <vector>
 #include <unordered_map>
 
 class DFA {
+
   public:
     DFA();
     virtual ~DFA();
@@ -15,6 +19,7 @@ class DFA {
     void set_alphabet(std::vector<std::string> alphabet);
     bool is_final_state(std::string state);
     void add_transition(std::string state, std::string letter, std::string next);
+    std::unordered_map<std::string, std::string> get_transitions();
     bool is_word_valid(std::string word);
     bool is_letter_in_alphabet(std::string letter);
 
@@ -27,3 +32,5 @@ class DFA {
 
     std::unordered_map<std::string, std::string> state_transition_table;
 };
+
+#endif // DFA_H

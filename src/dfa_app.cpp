@@ -9,7 +9,7 @@ int main (int argc, char *argv[]) {
   auto app = Gtk::Application::create(argc, argv, "org.gtkmm.example");
 
   DefineWindow define_window;
-
+/*
   DFA automaton = DFA();
   std::vector<std::string> states;
   states.push_back("q0");
@@ -40,7 +40,7 @@ int main (int argc, char *argv[]) {
   std::cout << "The word " << word << " is " << automaton.is_word_valid(word) << std::endl;
 
 
-  return 0;
+  return 0;*/
   //Shows the window and returns when it is closed.
-  // return app->run(define_window);
+  return app->run(define_window);
 }

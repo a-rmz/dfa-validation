@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <iostream>
+
 DFA::DFA() {
   
 }
@@ -54,6 +55,10 @@ void DFA::create_keys() {
 void DFA::add_transition(std::string state, std::string letter, std::string next) {
   std::string key = state + letter;
   this->state_transition_table[key] = next;
+}
+
+std::unordered_map<std::string, std::string> DFA::get_transitions() {
+  return this->state_transition_table;
 }
 
 bool DFA::is_word_valid(std::string word) {

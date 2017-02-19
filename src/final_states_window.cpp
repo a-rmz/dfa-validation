@@ -6,9 +6,12 @@
 
 #include <iostream>
 
-FinalStatesWindow::FinalStatesWindow() :
+FinalStatesWindow::FinalStatesWindow(DFA* automaton) :
   m_label_final_states("Select the final states"),
   m_button_quit("Close") {
+
+  this->automaton = automaton;
+  set_states(automaton->get_states());
   
   set_title("Select final steps");;
   // Sets the border width of the window.
@@ -41,14 +44,22 @@ FinalStatesWindow::FinalStatesWindow() :
 FinalStatesWindow::~FinalStatesWindow() { }
 
 void FinalStatesWindow::set_states(std::vector<std::string> states) {
-  this->states = states;
-  for (std::string state : this->states) {
+  for (std::string state : states) {
     this->m_grid_checks.add(*Gtk::manage(new Gtk::CheckButton(state)));
   }
-  // Display everything
-  show_all_children();
 }
 
 void FinalStatesWindow::on_quit_clicked() {
+  std::vector<std::string> final_states;
+
+  for (Gtk::Widget* child : m_grid_checks.get_children()) {
+    Gtk::CheckButton* button = (Gtk::CheckButton*) child;
+    
+    if (button->get_active()) {
+      final_states.push_back(button->get_label());
+    }
+  }
+
+  this->automaton->set_final_states(final_states);
   hide();
 }

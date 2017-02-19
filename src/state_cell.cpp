@@ -1,6 +1,17 @@
 
 #include "state_cell.h"
 
+StateCell::StateCell(std::vector<std::string> states, int current_state, std::string letter) {
+  set_state(states.at(current_state));
+  set_letter(letter);
+  
+  for (std::string state : states) {
+    append(state);
+  }
+};
+
+StateCell::~StateCell() {};
+
 void StateCell::set_state(std::string state) {
   this->state = state;
 }
