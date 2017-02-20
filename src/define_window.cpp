@@ -2,6 +2,7 @@
 #include "define_window.h"
 #include "grid_entry.h"
 #include "str_utils.h"
+#include <algorithm>
 #include <iostream>
 #include <gtkmm/messagedialog.h>
 #include <gtkmm/orientable.h>
@@ -104,10 +105,11 @@ std::vector<std::string> DefineWindow::get_states() {
   auto children = this->m_grid_states.get_children();
   std::vector<std::string> states;
 
-  for (Gtk::Widget* elem : children) {
+   for (Gtk::Widget* elem : children) {
     GridEntry* state = (GridEntry*) elem;
     states.push_back(state->get_entry_text());
   }
+  std::reverse(states.begin(), states.end());
 
   return states;
 }
