@@ -2,11 +2,11 @@
 #ifndef STATES_TABLE_WINDOW_H
 #define STATES_TABLE_WINDOW_H
 
+#include "dfa.h"
 #include <gtkmm/button.h>
 #include <gtkmm/grid.h>
-#include <gtkmm/window.h>
 #include <gtkmm/label.h>
-#include "dfa.h"
+#include <gtkmm/window.h>
 
 class StatesTableWindow : public Gtk::Window {
 
@@ -20,6 +20,8 @@ class StatesTableWindow : public Gtk::Window {
     Gtk::Button m_button_done;
     Gtk::Grid m_grid_top, m_grid_states;
     Gtk::Label m_label_table;
+
+  // Reference to the DFA
     DFA* automaton;
 
 };

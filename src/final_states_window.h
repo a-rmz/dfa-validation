@@ -2,16 +2,14 @@
 #ifndef DEFINE_WINDOW_H
 #define DEFINE_WINDOW_H
 
-#include "grid_entry.h"
 #include "dfa.h"
-#include <gtkmm/window.h>
+#include "grid_entry.h"
 #include <gtkmm/button.h>
-#include <gtkmm/entry.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/label.h>
-#include <glibmm/ustring.h>
-#include <vector>
+#include <gtkmm/window.h>
 #include <string>
+#include <vector>
 
 class FinalStatesWindow : public Gtk::Window {
 
@@ -28,6 +26,8 @@ protected:
   Gtk::Label m_label_final_states;
   Gtk::Grid m_grid_top, m_grid_checks;
   Gtk::Button m_button_quit;
+
+  // Reference to the DFA
   DFA* automaton;  
 };
 

@@ -18,7 +18,9 @@ class GridEntry : public Gtk::Box {
   protected:
     void on_remove_clicked();
 
+    // Reference to the parent container
     Gtk::Grid* parent;
+    
     Gtk::Entry m_entry_state;
     Gtk::Button m_button_remove;
 };

@@ -1,10 +1,10 @@
 
 #include "define_window.h"
 #include <gtkmm/application.h>
-#include <iostream>
 
-#include "dfa.h"
-
+/**
+  * Entry point for the app
+  */
 int main (int argc, char *argv[]) {
   auto app = Gtk::Application::create(argc, argv, "org.gtkmm.example");
 

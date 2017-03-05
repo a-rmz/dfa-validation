@@ -3,7 +3,6 @@
 #include "grid_entry.h"
 #include "str_utils.h"
 #include <algorithm>
-#include <iostream>
 #include <gtkmm/messagedialog.h>
 #include <gtkmm/orientable.h>
 
@@ -11,7 +10,7 @@
   * Constructor
   */
 DefineWindow::DefineWindow() :
-  // Initialize the buttons
+  // Initialize the buttons and labels
   m_label_lang("Insert the symbols of the language (separted by ' , ')"),
   m_label_states("Insert the states of the DFA"),
   m_button_add("Add another state"),
@@ -24,6 +23,7 @@ DefineWindow::DefineWindow() :
   set_title("DFA Validation app");
   // Sets the border width of the window.
   set_border_width(25);
+  // This allows autoscaling
   set_resizable(false);
 
   this->final_states_window = NULL;
