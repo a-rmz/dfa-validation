@@ -2,7 +2,6 @@
 #ifndef FINAL_STATES_WINDOW_H
 #define FINAL_STATES_WINDOW_H
 
-#include "grid_entry.h"
 #include "final_states_window.h"
 #include "states_table_window.h"
 #include "validate_window.h"
@@ -12,7 +11,6 @@
 #include <gtkmm/entry.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/label.h>
-#include <glibmm/ustring.h>
 #include <vector>
 #include <string>
 
@@ -42,6 +40,8 @@ protected:
   FinalStatesWindow* final_states_window;
   StatesTableWindow* states_table_window;
   ValidateWindow* validate_window;
+  
+  // Original reference to the automaton
   DFA automaton;
 };
 
